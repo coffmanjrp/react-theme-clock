@@ -5,6 +5,7 @@ import './App.scss';
 
 function App() {
   const [time, setTime] = useState({});
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     setDateAndTime();
@@ -29,8 +30,10 @@ function App() {
   const ampm = time.hours <= 12 ? 'AM' : 'PM';
 
   return (
-    <div className="App">
-      <button className="toggle">Dark mode</button>
+    <div className={`App${isDarkMode ? ' dark' : ''}`}>
+      <button className="toggle" onClick={() => setIsDarkMode((prev) => !prev)}>
+        {isDarkMode ? 'Light mode' : 'Dark mode'}
+      </button>
       <div className="clock-container">
         <div className="clock">
           <div
